@@ -1,4 +1,5 @@
-require 'rubygems'
+$LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
+
 require 'test/unit'
 require 'yahoo-weather'
 
@@ -105,7 +106,7 @@ class TestAPI < Test::Unit::TestCase
       # check the forecast info
       assert_not_nil response.forecasts
       assert_kind_of Array, response.forecasts
-      assert_equal response.forecasts.length, 2
+      assert_equal response.forecasts.length, 5
       response.forecasts.each do |forecast|
         assert_instance_of YahooWeather::Forecast, forecast
         assert(forecast.day && forecast.day.length == 3)
